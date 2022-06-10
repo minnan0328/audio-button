@@ -1,0 +1,28 @@
+<div>
+  <button
+    v-if="currentAudioState && audio"
+    :class="['udiTech-btn-audio adiTech-btn-orange',
+            {
+              'playing': isPlaying || isPaused
+            }]"
+    v-text="btnState[currentAudioState].text"
+    @click="btnState[currentAudioState].event"
+    :disabled="disabled"
+    :style="{'--timelineWidth': audioInfo.percent}"
+  ></button>
+  <button
+    v-if="currentAudioState && audio"
+    :class="['udiTech-btn-audio adiTech-btn-orange ml',
+              isPlaying ? 'icon-pause2' : 'icon-play3',
+            {
+              'playing-test': isPlaying || isPaused
+            }]"
+    v-text="btnState[currentAudioState].text"
+    @click="btnState[currentAudioState].event"
+    :disabled="disabled"
+    :style="{'--timelineWidth': audioInfo.percent}"
+  ></button>
+  <p v-for="(info,key) in audioInfo" v-text="`${key} : ${info}`"></p>
+  <p>isPlaying : {{isPlaying}}</p>
+  <p>isPaused : {{isPaused}}</p>
+</div>
